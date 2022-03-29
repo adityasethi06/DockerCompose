@@ -1,0 +1,12 @@
+version: '3'
+services:
+    redis-server:
+        image: 'redis'
+    node-app:
+        restart: always # restart policy on failure
+        build: . # use Dockerfile in dir .
+        ports:
+            - "4001:8080"
+
+# finding the above 2 services in this file, docker-compose will automatically create both
+# containers on the same network, so they can communicate.
